@@ -22,7 +22,36 @@ Embedded automotive system for real-time OBD-II data reading and display. The sy
 4. The Unihiker K10 receives data via I2C/UART and processes it.
 5. The LM2596 regulates 12V down to 5V for the Unihiker.
 
-![Hardware](<HARDWARE BLOCK DIAGRAM.png>)
+```mermaid
+---
+config:
+  layout: fixed
+---
+flowchart LR
+    %% Nodes
+    Vehicle["<b>VEHICLE</b><br>Battery 12V"] --> OBDII["<b>OBD-II</b><br>CAN High/Low"]
+    OBDII --> StepDown["<b>Step Down</b><br>LM2596 (5V)"]
+    OBDII --> CANTransceiver["<b>CAN Transceiver</b><br>SN65HVD230"]
+    CANTransceiver --> I2CUART["<b>I2C / UART</b>"]
+    StepDown --> UNIHIKER["<b>UNIHIKER</b>"]
+    I2CUART --> UNIHIKER
+
+    %% Class assignments
+    Vehicle:::source
+    OBDII:::canbus
+    StepDown:::power
+    CANTransceiver:::communication
+    I2CUART:::communication
+    UNIHIKER:::device
+
+    %% Styling
+    classDef source stroke:#0ea5e9,fill:#e0f7ff,color:#0f172a
+    classDef canbus stroke:#38bdf8,fill:#f0f9ff,color:#0f172a
+    classDef communication stroke:#22c55e,fill:#f0fdf4,color:#0f172a
+    classDef power stroke:#eab308,fill:#fefce8,color:#0f172a
+    classDef device stroke:#a78bfa,fill:#f5f3ff,color:#0f172a
+
+```
 
 ### Software Flow
 1. Initialize the CAN module and OBD-II interface.
