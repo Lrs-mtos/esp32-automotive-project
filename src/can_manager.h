@@ -4,27 +4,27 @@
 #include <Arduino.h>
 #include "driver/twai.h"
 
-// Variáveis de Telemetria Compartilhadas
-extern int rpm_atual;
-extern int rpm_alvo;
-extern int kmh_atual;
-extern int kmh_alvo;
-extern int temp_oleo_simulada;
-extern float boost_calculado;
-extern float maf_gs_atual;
-extern float bateria_volts_atual;
+// Shared Telemetry Variables
+extern int current_rpm;
+extern int target_rpm;
+extern int current_kmh;
+extern int target_kmh;
+extern int simulated_oil_temp;
+extern float calculated_boost;
+extern float current_maf_gs;
+extern float current_battery_volts;
 
-extern bool ecu_conectada;
+extern bool ecu_connected;
 extern bool twai_ok;
-extern uint32_t pacotes_can_rx;
-extern uint32_t pacotes_obd_rx;
+extern uint32_t can_rx_packets;
+extern uint32_t obd_rx_packets;
 
-// Declarações das funções públicas do CAN
+// Public CAN Function Declarations
 void setup_twai();
-void verificar_estado_twai();
-bool solicitar_pid_obd(uint8_t pid);
-void ler_dados_obd();
-void processar_obd_requests();
-void atualizar_simulador_obd();
+void check_twai_state();
+bool request_obd_pid(uint8_t pid);
+void read_obd_data();
+void process_obd_requests();
+void update_obd_simulator();
 
 #endif // CAN_MANAGER_H

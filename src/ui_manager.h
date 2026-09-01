@@ -4,12 +4,12 @@
 #include <Arduino.h>
 #include <lvgl.h>
 
-extern int estado_tela_atual;
+extern int current_screen_state;
 extern lv_obj_t * label_debug;
 
-// Declarações públicas de UI
+// Public UI Declarations
 void setup_ui();
-void carregar_tela(int id_tela);
-void atualizar_ui();
+void load_screen(int screen_id);
+void update_ui();
 
 #endif // UI_MANAGER_H

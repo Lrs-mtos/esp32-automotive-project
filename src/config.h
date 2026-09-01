@@ -18,6 +18,6 @@
 #define DEBUG_UPDATE_INTERVAL_MS 500
 
 // Quantidade total de telas no sistema
-#define TOTAL_SCREENS 6
+#define TOTAL_SCREENS 7
 
 #endif // CONFIG_H
