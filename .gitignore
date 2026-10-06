@@ -53,3 +53,10 @@ dkms.conf
 
 # debug information files
 *.dwo
+
+.pio/
+.venv/
+.vscode/
+lib/
+include/
+test/
