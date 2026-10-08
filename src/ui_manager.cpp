@@ -146,23 +146,23 @@ static lv_obj_t * create_oil_icon(lv_obj_t * parent, lv_color_t color) {
     // Galon handle
     lv_obj_t * handle = lv_obj_create(container);
     lv_obj_set_size(handle, 6, 8);
-    lv_obj_align_to(handle, body, LV_ALIGN_OUT_RIGHT_MID, -1, 0); // Recuado 1px para fundir com o corpo
+    lv_obj_align_to(handle, body, LV_ALIGN_OUT_RIGHT_MID, -1, 0); // Inset 1px to blend with body
     lv_obj_set_style_bg_opa(handle, 0, 0);
     lv_obj_set_style_border_color(handle, color, 0);
     lv_obj_set_style_border_width(handle, 2, 0);
     lv_obj_set_style_radius(handle, 2, 0);
 
-    // Galon tip (totalmente horizontal)
+    // Spout tip (fully horizontal)
     lv_obj_t * spout = lv_obj_create(container);
     lv_obj_set_size(spout, 10, 2);
     lv_obj_set_style_bg_color(spout, color, 0);
     lv_obj_set_style_border_width(spout, 0, 0);
-    lv_obj_align_to(spout, body, LV_ALIGN_OUT_LEFT_TOP, 1, 2); // Encaixado perfeitamente na quina superior esquerda
+    lv_obj_align_to(spout, body, LV_ALIGN_OUT_LEFT_TOP, 1, 2); // Snapped to top-left corner
 
     // Lid
     lv_obj_t * cap = lv_obj_create(container);
     lv_obj_set_size(cap, 4, 2);
-    lv_obj_align_to(cap, body, LV_ALIGN_OUT_TOP_MID, 0, 1); // Centralizado no topo do corpo
+    lv_obj_align_to(cap, body, LV_ALIGN_OUT_TOP_MID, 0, 1); // Centered on top of body
     lv_obj_set_style_bg_color(cap, color, 0);
     lv_obj_set_style_border_width(cap, 0, 0);
 
@@ -172,7 +172,7 @@ static lv_obj_t * create_oil_icon(lv_obj_t * parent, lv_color_t color) {
     lv_obj_set_style_radius(drop, LV_RADIUS_CIRCLE, 0);
     lv_obj_set_style_bg_color(drop, color, 0);
     lv_obj_set_style_border_width(drop, 0, 0);
-    lv_obj_align_to(drop, spout, LV_ALIGN_OUT_BOTTOM_LEFT, -1, 2); // Alinhado logo abaixo da ponta do bico
+    lv_obj_align_to(drop, spout, LV_ALIGN_OUT_BOTTOM_LEFT, -1, 2); // Aligned just below spout tip
 
     return container;
 }
@@ -526,49 +526,49 @@ static void cloud_anim_cb(void * var, int32_t val) {
 }
 
 static void build_screen_6() {
-    lv_obj_set_style_bg_color(lv_scr_act(), lv_color_hex(0x0A0F1D), 0); // Fundo espacial escuro escuro
+    lv_obj_set_style_bg_color(lv_scr_act(), lv_color_hex(0x0A0F1D), 0); // Dark space background
 
-    // Título Principal do Projeto (Linha 1)
+    // Main Project Title (Line 1)
     lv_obj_t * title1 = lv_label_create(lv_scr_act());
     lv_label_set_text(title1, "UNIHIKER");
-    lv_obj_set_style_text_color(title1, lv_color_hex(0x00D5FF), 0); // Ciano brilhante esportivo
+    lv_obj_set_style_text_color(title1, lv_color_hex(0x00D5FF), 0); // Sporty bright cyan
     lv_obj_set_style_text_font(title1, &lv_font_montserrat_14, 0);
     lv_obj_align(title1, LV_ALIGN_TOP_MID, 0, 20);
 
-    // Título Principal (Linha 2)
+    // Main Project Title (Line 2)
     lv_obj_t * title2 = lv_label_create(lv_scr_act());
     lv_label_set_text(title2, "AUTOMOTIVE PROJECT");
     lv_obj_set_style_text_color(title2, lv_color_white(), 0);
     lv_obj_set_style_text_font(title2, &lv_font_montserrat_14, 0);
     lv_obj_align_to(title2, title1, LV_ALIGN_OUT_BOTTOM_MID, 0, 2);
 
-    // Nuvem 1: Maior, mais baixa e mais opaca (passando por trás do chassi)
+    // Cloud 1: Larger, lower, and more opaque (passing behind chassis)
     lv_obj_t * cloud1 = lv_obj_create(lv_scr_act());
     lv_obj_set_size(cloud1, 50, 14);
     lv_obj_align(cloud1, LV_ALIGN_TOP_LEFT, -80, 105);
     lv_obj_set_style_bg_color(cloud1, lv_color_white(), 0);
-    lv_obj_set_style_bg_opa(cloud1, LV_OPA_50, 0); // 50% de opacidade
+    lv_obj_set_style_bg_opa(cloud1, LV_OPA_50, 0); // 50% opacity
     lv_obj_set_style_border_width(cloud1, 0, 0);
     lv_obj_set_style_radius(cloud1, LV_RADIUS_CIRCLE, 0);
     lv_obj_clear_flag(cloud1, LV_OBJ_FLAG_SCROLLABLE);
 
-    // Nuvem 2: Menor, mais alta, mais lenta (efeito de profundidade/parallax)
+    // Cloud 2: Smaller, higher, slower (depth/parallax effect)
     lv_obj_t * cloud2 = lv_obj_create(lv_scr_act());
     lv_obj_set_size(cloud2, 35, 10);
     lv_obj_align(cloud2, LV_ALIGN_TOP_LEFT, -80, 80);
     lv_obj_set_style_bg_color(cloud2, lv_color_white(), 0);
-    lv_obj_set_style_bg_opa(cloud2, LV_OPA_30, 0); // 30% de opacidade
+    lv_obj_set_style_bg_opa(cloud2, LV_OPA_30, 0); // 30% opacity
     lv_obj_set_style_border_width(cloud2, 0, 0);
     lv_obj_set_style_radius(cloud2, LV_RADIUS_CIRCLE, 0);
     lv_obj_clear_flag(cloud2, LV_OBJ_FLAG_SCROLLABLE);
 
-    // Configuração das animações de deslizamento horizontal
+    // Horizontal sliding animation setup
     lv_anim_t a_cloud1, a_cloud2;
     lv_anim_init(&a_cloud1);
     lv_anim_set_var(&a_cloud1, cloud1);
     lv_anim_set_exec_cb(&a_cloud1, cloud_anim_cb);
-    lv_anim_set_values(&a_cloud1, 260, -80); // Entra pela direita (260) e sai totalmente à esquerda (-80)
-    lv_anim_set_time(&a_cloud1, 8000); // Cruzamento em 8 segundos
+    lv_anim_set_values(&a_cloud1, 260, -80); // Enter from right (260) and fully exit left (-80)
+    lv_anim_set_time(&a_cloud1, 8000); // 8-second transit
     lv_anim_set_repeat_count(&a_cloud1, LV_ANIM_REPEAT_INFINITE);
     lv_anim_start(&a_cloud1);
 
@@ -576,18 +576,18 @@ static void build_screen_6() {
     lv_anim_set_var(&a_cloud2, cloud2);
     lv_anim_set_exec_cb(&a_cloud2, cloud_anim_cb);
     lv_anim_set_values(&a_cloud2, 260, -80);
-    lv_anim_set_time(&a_cloud2, 13000); // 13 segundos (velocidade diferente para efeito realista)
+    lv_anim_set_time(&a_cloud2, 13000); // 13 seconds (different speed for realistic parallax effect)
     lv_anim_set_repeat_count(&a_cloud2, LV_ANIM_REPEAT_INFINITE);
     lv_anim_start(&a_cloud2);
 
-    // Rodapé / Instrução
+    // Footer / Instruction
     lv_obj_t * subtitle = lv_label_create(lv_scr_act());
     lv_label_set_text(subtitle, "Press Button A to Start");
-    lv_obj_set_style_text_color(subtitle, lv_color_hex(0x4A5568), 0); // Cinza fosco discreto
+    lv_obj_set_style_text_color(subtitle, lv_color_hex(0x4A5568), 0); // Subtle matte grey
     lv_obj_set_style_text_font(subtitle, &lv_font_montserrat_14, 0);
     lv_obj_align(subtitle, LV_ALIGN_BOTTOM_MID, 0, -25);
 
-    // Container central para o desenho do carro vetorizado
+    // Central container for vector car drawing
     lv_obj_t * car_container = lv_obj_create(lv_scr_act());
     lv_obj_set_size(car_container, 180, 90);
     lv_obj_align(car_container, LV_ALIGN_CENTER, 0, 10);
@@ -595,44 +595,44 @@ static void build_screen_6() {
     lv_obj_set_style_border_width(car_container, 0, 0);
     lv_obj_clear_flag(car_container, LV_OBJ_FLAG_SCROLLABLE);
 
-    // Desenho: Linha do asfalto (Chão)
+    // Drawing: Road surface line
     lv_obj_t * road = lv_obj_create(car_container);
     lv_obj_set_size(road, 160, 2);
     lv_obj_align(road, LV_ALIGN_BOTTOM_MID, 0, -15);
     lv_obj_set_style_bg_color(road, lv_color_hex(0x1F293D), 0);
     lv_obj_set_style_border_width(road, 0, 0);
 
-    // Desenho: Corpo principal do carro (Chassis)
+    // Drawing: Main car body (Chassis)
     lv_obj_t * body = lv_obj_create(car_container);
     lv_obj_set_size(body, 120, 22);
     lv_obj_align(body, LV_ALIGN_BOTTOM_MID, 0, -20);
-    lv_obj_set_style_bg_color(body, lv_color_hex(0xFF69B4), 0); // Corpo rosa (Hot Pink)
-    lv_obj_set_style_radius(body, 6, 0); // Cantos arredondados aerodinâmicos
+    lv_obj_set_style_bg_color(body, lv_color_hex(0xFF69B4), 0); // Pink body (Hot Pink)
+    lv_obj_set_style_radius(body, 6, 0); // Aerodynamic rounded corners
     lv_obj_set_style_border_width(body, 0, 0);
 
-    // Desenho: Cabine / Vidros
+    // Drawing: Cabin / Windows
     lv_obj_t * cabin = lv_obj_create(car_container);
     lv_obj_set_size(cabin, 55, 18);
     lv_obj_align(cabin, LV_ALIGN_BOTTOM_MID, -8, -38);
-    lv_obj_set_style_bg_color(cabin, lv_color_hex(0x0A0F1D), 0); // Mesmo tom do fundo (simulando película escura)
+    lv_obj_set_style_bg_color(cabin, lv_color_hex(0x0A0F1D), 0); // Same background tone (simulating tinted glass)
     lv_obj_set_style_border_color(cabin, lv_color_hex(0xFF69B4), 0);
     lv_obj_set_style_border_width(cabin, 2, 0);
     lv_obj_set_style_radius(cabin, 5, 0);
 
-    // Desenho: Roda Esquerda (Traseira)
+    // Drawing: Left Wheel (Rear)
     lv_obj_t * wheel_l = lv_arc_create(car_container);
     lv_obj_set_size(wheel_l, 20, 20);
     lv_obj_align(wheel_l, LV_ALIGN_BOTTOM_LEFT, 45, -6);
     lv_arc_set_bg_angles(wheel_l, 0, 360);
-    lv_arc_set_angles(wheel_l, 0, 180); // Segmento de calota para rotação visual
+    lv_arc_set_angles(wheel_l, 0, 180); // Hubcap segment for visual rotation
     lv_obj_remove_style(wheel_l, NULL, LV_PART_KNOB);
     lv_obj_set_style_pad_all(wheel_l, 0, 0);
-    lv_obj_set_style_arc_color(wheel_l, lv_color_hex(0x111622), LV_PART_MAIN); // Pneu
+    lv_obj_set_style_arc_color(wheel_l, lv_color_hex(0x111622), LV_PART_MAIN); // Tire
     lv_obj_set_style_arc_width(wheel_l, 3, LV_PART_MAIN);
-    lv_obj_set_style_arc_color(wheel_l, lv_color_hex(0xE2E8F0), LV_PART_INDICATOR); // Calota prata girando
+    lv_obj_set_style_arc_color(wheel_l, lv_color_hex(0xE2E8F0), LV_PART_INDICATOR); // Rotating silver hubcap
     lv_obj_set_style_arc_width(wheel_l, 3, LV_PART_INDICATOR);
 
-    // Desenho: Roda Direita (Dianteira)
+    // Drawing: Right Wheel (Front)
     lv_obj_t * wheel_r = lv_arc_create(car_container);
     lv_obj_set_size(wheel_r, 20, 20);
     lv_obj_align(wheel_r, LV_ALIGN_BOTTOM_RIGHT, -45, -6);
@@ -645,13 +645,13 @@ static void build_screen_6() {
     lv_obj_set_style_arc_color(wheel_r, lv_color_hex(0xE2E8F0), LV_PART_INDICATOR);
     lv_obj_set_style_arc_width(wheel_r, 3, LV_PART_INDICATOR);
 
-    // Inicializa a rotação contínua e suave das rodas
+    // Initialize smooth continuous wheel rotation
     lv_anim_t a_wheel_l, a_wheel_r;
     lv_anim_init(&a_wheel_l);
     lv_anim_set_var(&a_wheel_l, wheel_l);
     lv_anim_set_exec_cb(&a_wheel_l, wheel_rotate_anim_cb);
     lv_anim_set_values(&a_wheel_l, 0, 359);
-    lv_anim_set_time(&a_wheel_l, 600); // 600ms por volta completa (efeito veloz)
+    lv_anim_set_time(&a_wheel_l, 600); // 600ms per full revolution (high-speed effect)
     lv_anim_set_repeat_count(&a_wheel_l, LV_ANIM_REPEAT_INFINITE);
     lv_anim_start(&a_wheel_l);
 
@@ -663,7 +663,7 @@ static void build_screen_6() {
     lv_anim_set_repeat_count(&a_wheel_r, LV_ANIM_REPEAT_INFINITE);
     lv_anim_start(&a_wheel_r);
 
-    // Desenho: Farol Dianteiro (Glow amarelo na quina dianteira do carro)
+    // Drawing: Front Headlight (Yellow glow at the front edge of the car)
     lv_obj_t * headlight = lv_obj_create(car_container);
     lv_obj_set_size(headlight, 6, 3);
     lv_obj_align(headlight, LV_ALIGN_BOTTOM_LEFT, 26, -32);
@@ -688,13 +688,16 @@ void load_screen(int screen_id) {
 }
 
 void setup_ui() {
-    load_screen(6); // Agora inicializa direto na tela de descanso / introdução (Screen 6)
+    load_screen(6);
 
     label_debug = lv_label_create(lv_layer_top()); 
     lv_obj_set_style_text_font(label_debug, &lv_font_montserrat_14, 0);
     lv_obj_set_style_text_color(label_debug, lv_color_hex(0xFFFF00), 0);
     lv_obj_align(label_debug, LV_ALIGN_TOP_LEFT, 5, 5);
     lv_label_set_text(label_debug, "DEBUG STARTED");
+#if !SHOW_DEBUG_OVERLAY
+    lv_obj_add_flag(label_debug, LV_OBJ_FLAG_HIDDEN);
+#endif
 }
 
 void update_ui() {

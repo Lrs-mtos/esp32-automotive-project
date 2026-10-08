@@ -4,20 +4,23 @@
 #include <Arduino.h>
 
 // ==========================================
-// CONFIGURAÇÕES DO HARDWARE
+// HARDWARE SETTINGS
 // ==========================================
 #define CAN_TX_PIN 1 
 #define CAN_RX_PIN 2  
 #define SCREEN_DIR 1
 
 // ==========================================
-// TIMERS E INTERVALOS (MS)
+// TIMERS AND INTERVALS (MS)
 // ==========================================
 #define OBD_REQUEST_INTERVAL_MS  50
 #define UI_UPDATE_INTERVAL_MS    50
 #define DEBUG_UPDATE_INTERVAL_MS 500
 
-// Quantidade total de telas no sistema
+// Total screens on system
 #define TOTAL_SCREENS 7
+
+// Activates debug options
+#define SHOW_DEBUG_OVERLAY 0
 
 #endif // CONFIG_H
